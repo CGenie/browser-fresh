@@ -10,7 +10,7 @@ How it works
 * create a Python virtualenv
 * `pip install -r requirements.pip`
 * Start the proxy: `python src/server/run.py`
-* Point your browser to the test webpage (http://localhost:7777/html/index.html)
+* Point your browser to the test webpage [http://localhost:7777/html/index.html](http://localhost:7777/html/index.html)
 * Now you can give orders:
    * `curl -XPOST 'http://localhost:7777/page_refresh` -- will reload the page
    * `curl -XPOST 'http://localhost:7777/javascript_reload` -d '{"file_name": "test.js"}' -- will reload script
