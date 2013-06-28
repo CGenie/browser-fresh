@@ -17,6 +17,13 @@ How it works
       'test.js' (which prints out 'test' in the console)
    * `curl -XPOST 'http://localhost:7777/javascript_execute' -d 'console.log(1 + 2)'` -- will execute any JS in the browser
 
+Editor integration
+==================
+Now you can integrate these requests with your favorite editor. For example, in VIM you would do:
+```vim
+autocmd BufWritePost *.js !curl -s -XPOST 'http://localhost:7777/javascript_reload' -d '{"file_name": "%"}'
+```
+
 Notes
 =====
 Communication with the browser is done via WebSockets, while requests are always POSTS with JSON content by default
