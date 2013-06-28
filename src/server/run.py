@@ -12,7 +12,8 @@ app_params = {}
 #if settings.DEBUG:
 app_params['debug'] = True
 
-PROJECT_DIR = os.path.join('/home', 'przemek', 'git-work', 'browser-fresh', 'src')
+SERVER_DIR =  os.path.dirname(os.path.realpath(__file__))
+PROJECT_DIR = os.path.split(SERVER_DIR)[0]
 
 
 class EchoHandler(tornado.web.RequestHandler):
@@ -35,6 +36,10 @@ url_handlers = [
     (r"/js/(.*)",
      tornado.web.StaticFileHandler,
      {'path': os.path.join(PROJECT_DIR, 'js')}),
+    (r"/html/(.*)",
+     tornado.web.StaticFileHandler,
+     {'path': os.path.join(PROJECT_DIR, 'html')}),
+
 ]
 
 application = tornado.web.Application(url_handlers, **app_params)
