@@ -6,6 +6,11 @@ from tornado.web import RequestHandler
 class JSONRequestHandler(RequestHandler):
     def initialize(self, **kwargs):
         self.set_header("Content-Type", "application/json")
+        if self.request.method in ['POST', 'PUT', 'DELETE']:
+            try:
+                self.data = json.loads(self.request.body)
+            except ValueError:
+                pass
 
     def finish(self, chunk=None):
         if not isinstance(chunk, basestring):

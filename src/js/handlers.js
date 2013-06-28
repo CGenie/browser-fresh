@@ -1,8 +1,13 @@
 define(
     ['handlers/page_reload',
-     'handlers/javascript_reload'],
-    function(PageReloadHandler, JavaScriptReloadHandler) {
-        var handlers = [PageReloadHandler, JavaScriptReloadHandler];
+     'handlers/javascript_reload',
+     'handlers/javascript_execute'],
+    function(PageReloadHandler,
+	     JavaScriptReloadHandler,
+	     JavaScriptExecuteHandler) {
+        var handlers = [PageReloadHandler,
+			JavaScriptReloadHandler,
+			JavaScriptExecuteHandler];
 
         var find = function(handler_type) {
             ret = [];
