@@ -2,6 +2,7 @@ import os
 import tornado.ioloop
 import tornado.web
 
+from handlers.javascript_reload import JavaScriptReloadHandler
 from handlers.page_reload import PageReloadHandler
 from handlers.web_socket import WebSocketHandler
 
@@ -25,6 +26,7 @@ url_handlers = [
 
     (r"/ws/?", WebSocketHandler),
 
+    (r"/javascript_reload/?", JavaScriptReloadHandler),
     (r"/page_reload/?", PageReloadHandler),
 
     # STATICS

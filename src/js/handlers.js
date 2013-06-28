@@ -1,7 +1,8 @@
 define(
-    ['handlers/page_refresh'],
-    function(PageRefreshHandler) {
-        var handlers = [PageRefreshHandler];
+    ['handlers/page_reload',
+     'handlers/javascript_reload'],
+    function(PageReloadHandler, JavaScriptReloadHandler) {
+        var handlers = [PageReloadHandler, JavaScriptReloadHandler];
 
         var find = function(handler_type) {
             ret = [];

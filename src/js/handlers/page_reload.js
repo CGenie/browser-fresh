@@ -7,6 +7,6 @@ define(
 
 	return {
 	    call: call,
-	    supported_types: ['page_refresh']
+	    supported_types: ['page_reload']
 	}
     });
