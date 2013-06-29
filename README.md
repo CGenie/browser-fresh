@@ -17,6 +17,8 @@ How it works
       'test.js' (which prints out 'test' in the console)
    * `curl -XPOST 'http://localhost:7777/javascript_execute' -d 'console.log(1 + 2)'` -- will execute any JS in the browser
 
+Multiple sessions are supported, so that you can have multiple tabs open and send commands to all of them with one request.
+
 Editor integration
 ==================
 Now you can integrate these requests with your favorite editor. For example, in VIM you would do:
