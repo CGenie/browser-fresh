@@ -20,6 +20,9 @@ How it works
    * `curl -XPOST 'http://localhost:7777/javascript_execute' -d 'console.log(1 + 2)'` -- will execute any JS in the browser
    * `curl -XPOST 'http://localhost:7777/require_script_reload' -d '{"file_name": "test.js"}'` -- will attempt to reload
      a [requirejs](http://requirejs.org/) module. **NOTE**: this is still experimental
+   * `curl -XPOST 'http://localhost:7777/observe_directory' -d '{"path": "/some/path", "recursive": true}'` -- will observe
+     directory at `path` (optionally recursively) and send any reload notifications automatically when either JS or CSS
+     files change. Thus you don't need to add post-save hooks to your editor anymore for these files.
 
 Multiple sessions are supported, so that you can have multiple tabs open and send commands to all of them with one request.
 
