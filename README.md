@@ -18,6 +18,8 @@ How it works
    * `curl -XPOST 'http://localhost:7777/javascript_reload -d '{"file_name": "test.js"}'` -- will reload script
       `test.js` (which prints out 'test' in the console)
    * `curl -XPOST 'http://localhost:7777/javascript_execute' -d 'console.log(1 + 2)'` -- will execute any JS in the browser
+   * `curl -XPOST 'http://localhost:7777/require_script_reload' -d '{"file_name": "test.js"}'` -- will attempt to reload
+     a requirejs module (**NOTE**: this is still experimental)
 
 Multiple sessions are supported, so that you can have multiple tabs open and send commands to all of them with one request.
 
