@@ -2,6 +2,7 @@ import os
 import tornado.ioloop
 import tornado.web
 
+from handlers.css_reload import CSSReloadHandler
 from handlers.javascript_execute import JavaScriptExecuteHandler
 from handlers.javascript_reload import JavaScriptReloadHandler
 from handlers.page_reload import PageReloadHandler
@@ -28,11 +29,15 @@ url_handlers = [
 
     (r"/ws/?", WebSocketHandler),
 
+    (r"/css_reload/?", CSSReloadHandler),
     (r"/javascript_execute/?", JavaScriptExecuteHandler),
     (r"/javascript_reload/?", JavaScriptReloadHandler),
     (r"/page_reload/?", PageReloadHandler),
 
     # STATICS
+    (r"/css/(.*)",
+     tornado.web.StaticFileHandler,
+     {'path': os.path.join(PROJECT_DIR, 'css')}),
     (r"/js/(.*)",
      tornado.web.StaticFileHandler,
      {'path': os.path.join(PROJECT_DIR, 'js')}),

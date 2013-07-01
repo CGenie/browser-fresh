@@ -38,6 +38,7 @@ class JSONRequestHandler(RequestHandler):
 
 class WebSocketWriterMixin(object):
     def emit(self, type, data):
+        print 'emitting: %s\n%r' % (type, data)
         for ws in self.application.WEBSOCKETS:
             ws.write_message(json.dumps({
                 'type': type,

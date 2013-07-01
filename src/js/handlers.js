@@ -1,11 +1,14 @@
 define(
     ['handlers/page_reload',
+     'handlers/css_reload',
      'handlers/javascript_reload',
      'handlers/javascript_execute'],
     function(PageReloadHandler,
+	     CSSReloadHandler,
 	     JavaScriptReloadHandler,
 	     JavaScriptExecuteHandler) {
         var handlers = [PageReloadHandler,
+			CSSReloadHandler,
 			JavaScriptReloadHandler,
 			JavaScriptExecuteHandler];
 
