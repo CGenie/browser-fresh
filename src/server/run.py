@@ -6,6 +6,7 @@ from handlers.css_reload import CSSReloadHandler
 from handlers.javascript_execute import JavaScriptExecuteHandler
 from handlers.javascript_reload import JavaScriptReloadHandler
 from handlers.page_reload import PageReloadHandler
+from handlers.require_script_reload import RequireScriptReloadHandler
 from handlers.web_socket import WebSocketHandler
 
 
@@ -32,6 +33,7 @@ url_handlers = [
     (r"/css_reload/?", CSSReloadHandler),
     (r"/javascript_execute/?", JavaScriptExecuteHandler),
     (r"/javascript_reload/?", JavaScriptReloadHandler),
+    (r"/require_script_reload/?", RequireScriptReloadHandler),
     (r"/page_reload/?", PageReloadHandler),
 
     # STATICS
