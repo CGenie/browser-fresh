@@ -13,6 +13,8 @@ How it works
 * Point your browser to the test webpage [http://localhost:7777/html/index.html](http://localhost:7777/html/index.html)
 * Now you can give orders:
    * `curl -XPOST 'http://localhost:7777/page_refresh` -- will reload the page
+   * `curl -XPOST 'http://localhost:7777/css_reload` -d '{"file_name": "test.css"}' -- will reload CSS file
+      'test.css' (you can change the background color to see that it works)
    * `curl -XPOST 'http://localhost:7777/javascript_reload` -d '{"file_name": "test.js"}' -- will reload script
       'test.js' (which prints out 'test' in the console)
    * `curl -XPOST 'http://localhost:7777/javascript_execute' -d 'console.log(1 + 2)'` -- will execute any JS in the browser
