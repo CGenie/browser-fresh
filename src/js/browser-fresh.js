@@ -44,20 +44,33 @@ BrowserFresh.start = function(options) {
    BrowserFresh.require(
        ['jquery', 'handlers'],
        function($, Handlers) {
-	   var socket = new WebSocket(BrowserFresh.WS_API_HOST + 'ws');
-	   socket.onopen = function() {
-	   };
-	   socket.onmessage = function(evt) {
-	       console.log('incoming data', evt.data);
-	       var data = JSON.parse(evt.data);
-	       var handlers = Handlers.find(data.type);
-	       for(var i = 0; i < handlers.length; i++) {
-		   handlers[i].call(data.data);
+	   var socket;
+
+	   var socketProbe = function() {
+	       console.log('probing for socket...');
+	       try {
+		   socket = new WebSocket(BrowserFresh.WS_API_HOST + 'ws');
+	       } catch(e) {
+		   console.log('couldn\'t find socket');
+	       }
+	       socket.onopen = function() {
+		   console.log('socket found');
+	       };
+	       socket.onmessage = function(evt) {
+		   console.log('incoming data', evt.data);
+		   var data = JSON.parse(evt.data);
+		   var handlers = Handlers.find(data.type);
+		   for(var i = 0; i < handlers.length; i++) {
+		       handlers[i].call(data.data);
+		   }
+	       }
+	       socket.onclose = function() {
+		   console.log('socket closed');
+		   setTimeout(socketProbe, 5000);
 	       }
 	   }
-	   socket.onclose = function() {
-	       console.log('socket closed');
-	   }
+
+	   socketProbe();
        });
 };
 
