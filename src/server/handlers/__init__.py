@@ -1,5 +1,6 @@
 import json
 
+from tornado.ioloop import IOLoop
 from tornado.web import RequestHandler
 
 
@@ -10,7 +11,7 @@ class JSONRequestHandler(RequestHandler):
             try:
                 self.data = json.loads(self.request.body)
             except ValueError:
-                pass
+                self.data = {}
 
     def finish(self, chunk=None):
         if not isinstance(chunk, basestring):
@@ -39,7 +40,7 @@ class JSONRequestHandler(RequestHandler):
 class WebSocketWriterMixin(object):
     def emit(self, type, data):
         print 'emitting: %s\n%r' % (type, data)
-        for ws in self.application.WEBSOCKETS:
+        for ws in IOLoop.instance().WEBSOCKETS:
             ws.write_message(json.dumps({
                 'type': type,
                 'data': data
